@@ -7,7 +7,7 @@ proyectos, horas, licencias, compras, ventas y facturación.
 ## Estructura
 
 - `backend/`: API y lógica de negocio en JavaScript (Node.js). Sin dependencias en el primer ciclo.
-- `frontend/`: interfaz web (React + Vite, por definir).
+- `frontend/`: interfaz en React con Vite (JSX, sin TypeScript). Ver `frontend/README.md`.
 - `docs/`: guía para alumnos, decisiones de arquitectura (ADR) e incidencias.
 
 ## Cómo correr las pruebas

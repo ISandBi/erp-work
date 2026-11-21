@@ -10,6 +10,7 @@ table { width: 100%; border-collapse: collapse; background: #fff; margin-bottom:
 th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #e3e8ee; }
 th { background: #e8edf3; font-weight: 600; }
 form { background: #fff; padding: 16px; border-radius: 6px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 24px; }
+.linea { display: flex; gap: 8px; width: 100%; }
 input, select { padding: 7px 9px; border: 1px solid #c5ced8; border-radius: 4px; }
 button { padding: 7px 14px; background: #2a9d8f; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
 button:hover { background: #21867a; }
@@ -17,4 +18,4 @@ button:hover { background: #21867a; }
 .tarjeta { background: #fff; padding: 16px; border-radius: 6px; display: flex; flex-direction: column; gap: 6px; }
 .tarjeta span { color: #607080; font-size: 14px; }
 .tarjeta strong { font-size: 22px; }
-#mensaje { color: #b00020; }
+.mensaje { color: #b00020; }

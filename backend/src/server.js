@@ -9,7 +9,7 @@ const facturacion = require("./modulos/facturacion/facturacion");
 const reportes = require("./modulos/reportes/reportes");
 const { obtenerEstado } = require("./store");
 
-const RAIZ_FRONTEND = path.join(__dirname, "..", "..", "frontend");
+const RAIZ_FRONTEND = path.join(__dirname, "..", "..", "frontend", "dist");
 const TIPOS = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
@@ -78,7 +78,7 @@ function servirEstatico(url, res) {
   fs.readFile(archivo, (err, contenido) => {
     if (err) {
       res.writeHead(404);
-      return res.end("No encontrado");
+      return res.end("No encontrado. Falta compilar el frontend: ejecuta npm run build en frontend");
     }
     res.writeHead(200, { "Content-Type": TIPOS[path.extname(archivo)] ?? "application/octet-stream" });
     res.end(contenido);
