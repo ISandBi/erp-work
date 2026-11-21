@@ -2,17 +2,36 @@
 
 function crearEstadoInicial() {
   return {
-    productos: [
-      { id: 1, sku: "SRV-HORA", nombre: "Consultoría por hora", tipo: "servicio", precio: 800, stock: null },
-      { id: 2, sku: "LIC-DEV", nombre: "Licencia Dev Suite anual", tipo: "licencia", precio: 1500, stock: 10 },
-      { id: 3, sku: "HW-TEST", nombre: "Servidor de pruebas", tipo: "hardware", precio: 25000, stock: 3 },
-      { id: 4, sku: "LIC-QA", nombre: "Suite de QA", tipo: "licencia", precio: 900, stock: 0 },
+    personas: [
+      { id: 1, nombre: "Ana López", rol: "Director general", area: "Dirección general" },
+      { id: 2, nombre: "Luis Ortega", rol: "Director de proyectos", area: "Dirección de proyectos" },
+      { id: 3, nombre: "Marta Ruiz", rol: "Ejecutiva de ventas", area: "Ventas" },
+      { id: 4, nombre: "Jorge Méndez", rol: "Líder de QA", area: "QA" },
+      { id: 5, nombre: "Sofía Vera", rol: "Diseñadora UI/UX", area: "UI/UX" },
+      { id: 6, nombre: "Diego Ramos", rol: "Desarrollador", area: "Desarrollo" },
     ],
-    ordenesCompra: [],
-    ventas: [],
-    facturas: [],
+    clientes: [{ id: 1, nombre: "Cliente demo", contacto: "contacto@ejemplo.com" }],
+    proyectos: [
+      {
+        id: 1,
+        nombre: "Proyecto de ejemplo",
+        clienteId: 1,
+        responsableId: 2,
+        equipo: [4, 5, 6],
+        estado: "en_curso",
+        inicio: "2026-11-01",
+        fechaCompromiso: "2026-12-15",
+        presupuesto: 500000,
+        creado: "2026-11-01T00:00:00.000Z",
+        avances: [
+          { id: 1, fecha: "2026-11-10T00:00:00.000Z", porcentaje: 20, nota: "Levantamiento de requisitos", autorId: 2 },
+        ],
+        entregables: [{ id: 1, nombre: "Prototipo", fechaLimite: "2026-11-30", estado: "en_proceso" }],
+        documentos: [],
+      },
+    ],
     tickets: [],
-    secuencias: { producto: 4, orden: 0, venta: 0, factura: 0, ticket: 0 },
+    secuencias: { persona: 6, cliente: 1, proyecto: 1, avance: 1, entregable: 1, documento: 0, ticket: 0 },
   };
 }
 

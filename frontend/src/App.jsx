@@ -1,19 +1,13 @@
 import { useEffect, useState } from "react";
 import Resumen from "./vistas/Resumen.jsx";
-import Catalogo from "./vistas/Catalogo.jsx";
-import Inventario from "./vistas/Inventario.jsx";
-import Compras from "./vistas/Compras.jsx";
-import Ventas from "./vistas/Ventas.jsx";
-import Facturas from "./vistas/Facturas.jsx";
+import Proyectos from "./vistas/Proyectos.jsx";
+import Organizacion from "./vistas/Organizacion.jsx";
 import Tickets from "./vistas/Tickets.jsx";
 
 const vistas = {
   resumen: { nombre: "Resumen", componente: Resumen },
-  catalogo: { nombre: "Catálogo", componente: Catalogo },
-  inventario: { nombre: "Inventario", componente: Inventario },
-  compras: { nombre: "Compras", componente: Compras },
-  ventas: { nombre: "Ventas", componente: Ventas },
-  facturas: { nombre: "Facturas", componente: Facturas },
+  proyectos: { nombre: "Proyectos", componente: Proyectos },
+  organizacion: { nombre: "Organización", componente: Organizacion },
   tickets: { nombre: "Tickets TI", componente: Tickets },
 };
 
@@ -35,7 +29,7 @@ export default function App() {
   return (
     <>
       <header>
-        <h1>IS&amp;BI ERP</h1>
+        <h1>IS&amp;BI</h1>
         <nav>
           {Object.entries(vistas).map(([clave, { nombre }]) => (
             <a key={clave} href={`#/${clave}`} className={clave === ruta ? "activa" : ""}>

@@ -21,3 +21,5 @@ button:hover { background: #21867a; }
 .mensaje { color: #b00020; }
 .filtros { display: flex; gap: 8px; margin-bottom: 16px; }
 details { margin-top: 6px; font-size: 14px; color: #3c4a5a; }
+.detalle { background: #fff; padding: 16px; border-radius: 6px; margin-bottom: 24px; }
+.detalle h4 { margin-bottom: 6px; }

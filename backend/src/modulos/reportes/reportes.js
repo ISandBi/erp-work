@@ -1,19 +1,18 @@
 const { obtenerEstado } = require("../../store");
-const { redondear } = require("../../util");
+const proyectos = require("../proyectos/proyectos");
 
 function resumen() {
-  const estado = obtenerEstado();
-  const ventasTotal = estado.ventas.reduce((acc, v) => acc + v.total, 0);
-  const stockBajo = estado.productos
-    .filter((p) => p.tipo !== "servicio" && p.stock < 5)
-    .map((p) => p.sku);
+  const lista = proyectos.listarProyectos();
+  const activos = lista.filter((p) => p.estado === "planeacion" || p.estado === "en_curso");
+  const avancePromedio = activos.length
+    ? Math.round(activos.reduce((acc, p) => acc + p.avance, 0) / activos.length)
+    : 0;
   return {
-    ventasTotal: redondear(ventasTotal),
-    ventasNumero: estado.ventas.length,
-    facturas: estado.facturas.length,
-    ordenesPendientes: estado.ordenesCompra.filter((o) => o.estado === "pendiente").length,
-    ticketsAbiertos: estado.tickets.filter((t) => t.estado !== "cerrado" && t.estado !== "resuelto").length,
-    stockBajo,
+    proyectosTotal: lista.length,
+    proyectosActivos: activos.length,
+    enRiesgo: lista.filter((p) => p.salud === "en riesgo").map((p) => p.nombre),
+    avancePromedio,
+    ticketsAbiertos: obtenerEstado().tickets.filter((t) => t.estado !== "cerrado" && t.estado !== "resuelto").length,
   };
 }
 
