@@ -12,6 +12,7 @@ function resumen() {
     ventasNumero: estado.ventas.length,
     facturas: estado.facturas.length,
     ordenesPendientes: estado.ordenesCompra.filter((o) => o.estado === "pendiente").length,
+    ticketsAbiertos: estado.tickets.filter((t) => t.estado !== "cerrado" && t.estado !== "resuelto").length,
     stockBajo,
   };
 }

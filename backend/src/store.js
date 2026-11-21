@@ -11,7 +11,8 @@ function crearEstadoInicial() {
     ordenesCompra: [],
     ventas: [],
     facturas: [],
-    secuencias: { producto: 4, orden: 0, venta: 0, factura: 0 },
+    tickets: [],
+    secuencias: { producto: 4, orden: 0, venta: 0, factura: 0, ticket: 0 },
   };
 }
 

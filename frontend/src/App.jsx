@@ -5,6 +5,7 @@ import Inventario from "./vistas/Inventario.jsx";
 import Compras from "./vistas/Compras.jsx";
 import Ventas from "./vistas/Ventas.jsx";
 import Facturas from "./vistas/Facturas.jsx";
+import Tickets from "./vistas/Tickets.jsx";
 
 const vistas = {
   resumen: { nombre: "Resumen", componente: Resumen },
@@ -13,6 +14,7 @@ const vistas = {
   compras: { nombre: "Compras", componente: Compras },
   ventas: { nombre: "Ventas", componente: Ventas },
   facturas: { nombre: "Facturas", componente: Facturas },
+  tickets: { nombre: "Tickets TI", componente: Tickets },
 };
 
 function leerRuta() {

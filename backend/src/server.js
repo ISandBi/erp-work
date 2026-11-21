@@ -7,6 +7,7 @@ const compras = require("./modulos/compras/compras");
 const ventas = require("./modulos/ventas/ventas");
 const facturacion = require("./modulos/facturacion/facturacion");
 const reportes = require("./modulos/reportes/reportes");
+const tickets = require("./modulos/tickets/tickets");
 const { obtenerEstado } = require("./store");
 
 const RAIZ_FRONTEND = path.join(__dirname, "..", "..", "frontend", "dist");
@@ -29,6 +30,10 @@ const rutas = [
   { metodo: "POST", patron: /^\/api\/ventas$/, manejar: (_m, _url, cuerpo) => ventas.crearVenta(cuerpo) },
   { metodo: "POST", patron: /^\/api\/ventas\/(\d+)\/facturar$/, manejar: (m) => facturacion.facturarVenta(Number(m[1])) },
   { metodo: "GET", patron: /^\/api\/facturas$/, manejar: () => facturacion.listarFacturas() },
+  { metodo: "GET", patron: /^\/api\/tickets$/, manejar: (_m, url) => tickets.listarTickets({ area: url.searchParams.get("area") ?? undefined, estado: url.searchParams.get("estado") ?? undefined }) },
+  { metodo: "POST", patron: /^\/api\/tickets$/, manejar: (_m, _url, cuerpo) => tickets.crearTicket(cuerpo) },
+  { metodo: "GET", patron: /^\/api\/tickets\/resumen$/, manejar: () => tickets.resumenPorArea() },
+  { metodo: "POST", patron: /^\/api\/tickets\/(\d+)\/estado$/, manejar: (m, _url, cuerpo) => tickets.cambiarEstado(Number(m[1]), cuerpo.estado, cuerpo.comentario) },
 ];
 
 function leerCuerpo(req) {
