@@ -18,3 +18,12 @@ npm test
 ```
 
 Ver `docs/guia-alumnos.md` antes de tocar código.
+
+## Cómo correr el ERP
+
+```bash
+cd backend
+npm start
+```
+
+Luego abre http://localhost:3000 en el navegador.

@@ -1,15 +1,16 @@
-const test = require("node:test");
+const { test, beforeEach } = require("node:test");
 const assert = require("node:assert");
+const { reiniciarEstado } = require("../src/store");
 const inventario = require("../src/modulos/inventario/inventario");
 
-test.beforeEach(() => inventario.reiniciarStock());
+beforeEach(() => reiniciarEstado());
 
-test("registrar una entrada válida aumenta el stock", () => {
-  inventario.registrarEntrada({ productoId: 1, cantidad: 5 });
-  assert.strictEqual(inventario.obtenerStock(1), 5);
+test("una entrada válida aumenta el stock", () => {
+  inventario.registrarEntrada({ productoId: 2, cantidad: 5 });
+  assert.strictEqual(inventario.obtenerStock(2), 15);
 });
 
-// Prueba de aceptación de INC-001 (falla a propósito hasta corregir el bug)
+// Criterio de aceptación de INC-001
 test("una entrada con cantidad negativa se rechaza", () => {
-  assert.throws(() => inventario.registrarEntrada({ productoId: 1, cantidad: -5 }));
+  assert.throws(() => inventario.registrarEntrada({ productoId: 2, cantidad: -5 }));
 });

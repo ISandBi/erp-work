@@ -5,7 +5,8 @@
   "description": "Backend del ERP de práctica IS&BI",
   "main": "src/index.js",
   "scripts": {
-    "test": "node --test test/"
+    "test": "node --test test/*.test.js",
+    "start": "node src/server.js"
   },
   "engines": {
     "node": ">=20"

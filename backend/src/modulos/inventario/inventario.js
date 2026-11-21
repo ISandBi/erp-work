@@ -1,20 +1,26 @@
-// Módulo de inventario (primer ciclo).
-// Estado en memoria mientras no exista base de datos.
-
-const stock = new Map();
+const catalogo = require("../catalogo/catalogo");
 
 function obtenerStock(productoId) {
-  return stock.get(productoId) ?? 0;
+  return catalogo.obtenerProducto(productoId).stock ?? 0;
 }
 
+// Las entradas suman existencias. Los servicios no manejan inventario.
 function registrarEntrada({ productoId, cantidad }) {
-  // TODO: validar cantidad (ver docs/incidencias/INC-001)
-  stock.set(productoId, obtenerStock(productoId) + cantidad);
-  return obtenerStock(productoId);
+  const producto = catalogo.obtenerProducto(productoId);
+  if (producto.tipo === "servicio") return null;
+  producto.stock = producto.stock + cantidad;
+  return producto.stock;
 }
 
-function reiniciarStock() {
-  stock.clear();
+// Las salidas validan existencias antes de descontar
+function registrarSalida({ productoId, cantidad }) {
+  const producto = catalogo.obtenerProducto(productoId);
+  if (producto.tipo === "servicio") return null;
+  if (producto.stock < cantidad) {
+    throw new Error(`Existencias insuficientes para ${producto.sku}`);
+  }
+  producto.stock -= cantidad;
+  return producto.stock;
 }
 
-module.exports = { obtenerStock, registrarEntrada, reiniciarStock };
+module.exports = { obtenerStock, registrarEntrada, registrarSalida };
